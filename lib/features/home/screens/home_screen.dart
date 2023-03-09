@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:resturant_app/features/home/widgets/bottom_navigation_bar.dart';
+import 'package:resturant_app/features/home/widgets/see_more.dart';
 import '../../../common/model/products_model.dart';
 import '../../../common/data/products_data.dart';
 import '../widgets/header_text.dart';
@@ -49,8 +49,7 @@ class _HomeScreenState extends State<HomeScreen>
         Padding(
           padding: EdgeInsets.all(8.0),
           child: CircleAvatar(
-            backgroundImage: CachedNetworkImageProvider(
-                "https://lh3.googleusercontent.com/a/AGNmyxY5oDlL0mkmG3oB0GFQUqo-EXv3fuapWqmTHS5v=s288"),
+            backgroundImage: AssetImage("assets/products_items/profile.jpg"),
           ),
         )
       ]),
@@ -89,6 +88,7 @@ class _HomeScreenState extends State<HomeScreen>
                       text: "Sauce",
                     ),
                   ]),
+              seeMore(context),
               myProductsList(context, list, _category)
             ],
           ),

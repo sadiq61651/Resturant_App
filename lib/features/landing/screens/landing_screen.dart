@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resturant_app/features/home/screens/home_screen.dart';
@@ -13,8 +12,7 @@ class LandingScreen extends StatelessWidget {
         decoration: const BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: CachedNetworkImageProvider(
-                    "https://images.unsplash.com/photo-1604259596863-57153177d40b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))),
+                image: AssetImage("assets/products_items/bg.jpg"))),
         child: Padding(
           padding: const EdgeInsets.only(top: 80, bottom: 30),
           child: Scaffold(
