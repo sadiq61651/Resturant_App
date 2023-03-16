@@ -6,6 +6,9 @@ import 'package:resturant_app/features/my_product/widgets/add_sub_button.dart';
 import 'package:resturant_app/features/my_product/widgets/extra_topping_button.dart';
 import 'package:resturant_app/features/my_product/widgets/my_rich_text.dart';
 import 'package:resturant_app/features/my_product/widgets/stars_and_timing.dart';
+import 'package:resturant_app/utils/my_font_size.dart';
+
+import '../widgets/my_sizebox.dart';
 
 class MyProductScreen extends StatelessWidget {
   static String path = "my-product-screen";
@@ -23,7 +26,7 @@ class MyProductScreen extends StatelessWidget {
           builder: (context, setState) => IconButton(
               onPressed: () => setState(() => isFaviorte = !isFaviorte),
               icon: NeumorphicIcon(Icons.favorite,
-                  size: 30,
+                  size: screenSize.height * 0.04,
                   style: NeumorphicStyle(
                     color:
                         isFaviorte ? Colors.red : Colors.red.withOpacity(0.1),
@@ -33,67 +36,69 @@ class MyProductScreen extends StatelessWidget {
       body: Padding(
         padding:
             const EdgeInsets.only(top: 15.0, bottom: 15, right: 8, left: 15),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Neumorphic(
-            style: const NeumorphicStyle(
-                shape: NeumorphicShape.concave, intensity: 0.1),
-            child: Text(" ${dataModel.name} ",
-                style: GoogleFonts.lato(
-                    fontSize: 35, fontWeight: FontWeight.bold)),
-          ),
-          const SizedBox(height: 20),
-          Neumorphic(
-            style: const NeumorphicStyle(
-                shape: NeumorphicShape.convex, intensity: 0.1),
-            child: Text("${dataModel.description} ",
-                style: GoogleFonts.lato(
-                  fontSize: 12,
-                )),
-          ),
-          const SizedBox(height: 20),
-          Row(children: [
-            CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: screenSize.width * 0.37,
-                child: Image.asset(dataModel.imageUrl)),
-            const SizedBox(width: 5),
-            Column(children: [
-              AddSubButton(price: dataModel.price.split(".")[0]),
-            ])
+        child: SingleChildScrollView(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Neumorphic(
+              style: const NeumorphicStyle(
+                  shape: NeumorphicShape.concave, intensity: 0.1),
+              child: Text(" ${dataModel.name} ",
+                  style: GoogleFonts.lato(
+                      fontSize: MyFontSize.extraLarge,
+                      fontWeight: FontWeight.bold)),
+            ),
+            const MySizeBox(),
+            Neumorphic(
+              style: const NeumorphicStyle(
+                  shape: NeumorphicShape.convex, intensity: 0.1),
+              child: Text("${dataModel.description} ",
+                  style: GoogleFonts.lato(
+                    fontSize: MyFontSize.small,
+                  )),
+            ),
+            const MySizeBox(),
+            Row(children: [
+              CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: screenSize.width * 0.36,
+                  child: Image.asset(dataModel.imageUrl)),
+              const SizedBox(width: 5),
+              AddSubButton(price: dataModel.price.split(".")[0])
+            ]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                myRichText(context, "Tomato"),
+                myRichText(context, "Red Onion"),
+                myRichText(context, "Fish"),
+                myRichText(context, "Pitted"),
+              ],
+            ),
+            const MySizeBox(),
+            Text(
+              "Add Ext'ra Topping",
+              style: GoogleFonts.lato(fontSize: MyFontSize.large),
+            ),
+            const MySizeBox(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                ExtraToppingButton(text: "Paper", isSelectFlag: true),
+                ExtraToppingButton(text: "Salt", isSelectFlag: false),
+                ExtraToppingButton(text: "Souce", isSelectFlag: false),
+                ExtraToppingButton(text: "Tomato", isSelectFlag: false),
+              ],
+            ),
+            const MySizeBox(),
+            const StarsAndTiming(),
+            const MySizeBox(),
+            Center(
+              child: Container(
+                  constraints: BoxConstraints(maxWidth: screenSize.width * 0.9),
+                  child: const CustomButton()),
+            ),
           ]),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              myRichText(context, "Tomato"),
-              myRichText(context, "Red Onion"),
-              myRichText(context, "Fish"),
-              myRichText(context, "Pitted"),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Text(
-            "Add Ext'ra Topping",
-            style: GoogleFonts.lato(fontSize: 30),
-          ),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              ExtraToppingButton(text: "Paper", isSelectFlag: true),
-              ExtraToppingButton(text: "Salt", isSelectFlag: false),
-              ExtraToppingButton(text: "Souce", isSelectFlag: false),
-              ExtraToppingButton(text: "Tomato", isSelectFlag: false),
-            ],
-          ),
-          const SizedBox(height: 20),
-          const StarsAndTiming(),
-          const SizedBox(height: 20),
-          Center(
-            child: Container(
-                constraints: const BoxConstraints(maxWidth: 300),
-                child: const CustomButton()),
-          ),
-        ]),
+        ),
       ),
     );
   }

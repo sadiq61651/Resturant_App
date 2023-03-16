@@ -44,24 +44,25 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: NeumorphicAppBar(actions: const [
+      appBar: NeumorphicAppBar(actions: [
         Padding(
-          padding: EdgeInsets.all(8.0),
-          child: CircleAvatar(
+          padding: EdgeInsets.all(size.width * 0.01),
+          child: const CircleAvatar(
             backgroundImage: AssetImage("assets/products_items/profile.jpg"),
           ),
         )
       ]),
       body: Padding(
-        padding: const EdgeInsets.all(30),
+        padding: EdgeInsets.all(size.width * 0.04),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const HeaderText(),
               myTextField(context),
-              const SizedBox(height: 20),
+              SizedBox(height: size.height * 0.02),
               TabBar(
                   onTap: (value) {
                     if (value == 0) _category = "food";

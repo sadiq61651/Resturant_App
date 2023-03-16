@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return NeumorphicApp(
       themeMode: ThemeMode.light,
+      debugShowCheckedModeBanner: false,
       home: const LandingScreen(),
-      routes: routes,
+      routes: myRoutes,
     );
   }
 }

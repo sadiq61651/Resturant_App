@@ -30,17 +30,19 @@ Widget myProductsList(BuildContext context, list, category) {
                     children: [
                       CircleAvatar(
                           backgroundColor: Colors.transparent,
-                          radius: 100,
+                          radius: screenSize.height * 0.12,
                           backgroundImage: AssetImage(list[index].imageUrl)),
                       Text(
                         list[index].name,
-                        style:
-                            GoogleFonts.lato(color: Colors.black, fontSize: 18),
+                        style: GoogleFonts.lato(
+                            color: Colors.black,
+                            fontSize: screenSize.height * 0.025),
                       ),
                       Text(
                         list[index].price,
-                        style:
-                            GoogleFonts.lato(color: Colors.red, fontSize: 18),
+                        style: GoogleFonts.lato(
+                            color: Colors.red,
+                            fontSize: screenSize.height * 0.023),
                       )
                     ],
                   ),

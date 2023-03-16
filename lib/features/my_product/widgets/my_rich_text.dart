@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resturant_app/utils/my_font_size.dart';
 
 @override
 Widget myRichText(BuildContext context, String text) {
@@ -9,7 +10,9 @@ Widget myRichText(BuildContext context, String text) {
         color: Colors.red,
         size: 10,
       ),
-      Text("  $text", style: const TextStyle(fontSize: 15, color: Colors.black))
+      Text("  $text",
+          style:
+              TextStyle(fontSize: MyFontSize.smallMedium, color: Colors.black))
     ],
   );
 }

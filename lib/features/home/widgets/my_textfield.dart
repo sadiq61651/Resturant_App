@@ -4,7 +4,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 Widget myTextField(BuildContext context) {
   return Neumorphic(
       style: NeumorphicStyle(
-          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
           shape: NeumorphicShape.convex),
       child: TextField(
         decoration: InputDecoration(

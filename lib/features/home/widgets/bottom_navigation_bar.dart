@@ -12,9 +12,11 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+
     return BottomNavigationBar(
         currentIndex: currentIndex,
-        iconSize: 30,
+        iconSize: screenSize.width * 0.07,
         onTap: (value) {
           currentIndex = value;
           setState(() {});

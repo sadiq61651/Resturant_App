@@ -1,5 +1,7 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:resturant_app/features/my_product/widgets/my_sizebox.dart';
+import 'package:resturant_app/utils/my_font_size.dart';
 
 class AddSubButton extends StatelessWidget {
   final String price;
@@ -12,14 +14,19 @@ class AddSubButton extends StatelessWidget {
   Widget build(BuildContext context) {
     int count = 1;
     int priceHolder = int.parse(price.split(r"$")[1]);
+
     return StatefulBuilder(
       builder: (context, setState) => Column(children: [
         Text(
           "\$${priceHolder.toString()}",
           style: GoogleFonts.lato(
-              color: Colors.red, fontWeight: FontWeight.bold, fontSize: 30),
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+              fontSize: priceHolder >= 100
+                  ? MyFontSize.large
+                  : MyFontSize.extraLarge),
         ),
-        const SizedBox(height: 10),
+        const MySizeBox(),
         Neumorphic(
           style: NeumorphicStyle(
               boxShape:
@@ -33,7 +40,8 @@ class AddSubButton extends StatelessWidget {
                     setState(() {});
                   },
                   icon: const Icon(Icons.add)),
-              Text(count.toString()),
+              Text(count.toString(),
+                  style: GoogleFonts.lato(fontSize: MyFontSize.medium)),
               IconButton(
                   onPressed: () {
                     if (count != 1) {
